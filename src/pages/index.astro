@@ -3,10 +3,12 @@ import MainLayout from '../layouts/MainLayout.astro'
 ---
   <MainLayout>
     <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
-      <div>
-        <h1 class="text-5xl font-bold mt-4 mb-8 leading-tight xl:text-6xl">
-          Articles, Stories & Tutorials for Tech People
-        </h1>
+      <div class='flex flex-col justify-around'>
+        <div class='w-3/4'>
+          <h1 class="text-3xl font-bold mt-4 xl:text-5xl !leading-[60px]">
+            Articles, News, Stories & Tutorials for Tech People
+          </h1>
+        </div>
 
         <form id="search-form" class="flex items-center">
           <label for="search-input" class="sr-only">Search</label>
