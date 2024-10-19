@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../images/logo.png";
 import "@fontsource/play";
+const { title = "Rescources for Tech People" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ import "@fontsource/play";
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Tech People Blog</title>
+    <title>{title}</title>
   </head>
   <body class="">
     <nav class="bg-gray-900 text-white">
