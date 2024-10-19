@@ -12,8 +12,8 @@
     "formatter": {
       "arrowParentheses": "asNeeded",
       "jsxQuoteStyle": "double",
-      "quoteStyle": "single",
-      "semicolons": "asNeeded",
+      "quoteStyle": "double",
+      "semicolons": "always",
       "trailingCommas": "es5"
     }
   },
@@ -22,13 +22,24 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noNonNullAssertion": "off" 
-      } 
+        "noNonNullAssertion": "off"
+      }
     }
   },
+  "overrides": [
+    {
+      "include": ["*.astro"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          }
+        }
+      }
+    }
+  ],
   "files": {
-    "ignore": [
-      "node_modules"
-    ]
+    "ignore": ["node_modules"]
   }
 }
