@@ -2,7 +2,7 @@
 import MainLayout from "../../layouts/MainLayout.astro"
 ---
 
-<MainLayout title = "All Articles">
+<MainLayout title = "Articles">
   <h1 class="text-2xl pb-3">All Articles</h1>
   <!-- Main Grid -->
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -23,13 +23,16 @@ import MainLayout from "../../layouts/MainLayout.astro"
           <p class="text-gray-600 text-sm mb-4">January 20, 2024</p>
           <div class="flex flex-wrap gap-2">
             <span
-            class="px-2 py-1 bg-blue-500 text-white rounded-full text-xs hover:opacity-90"
-            ><a href="">Tech</a></span
+              class="px-2 py-1 bg-blue-500 text-white rounded-full text-xs hover:opacity-90"
+            >
+              <a href="">Tech</a>
+            </span
           >
           <span
             class="px-2 py-1 bg-purple-500 text-white rounded-full text-xs hover:opacity-90"
-            ><a href="#">Hardware</a></span
           >
+            <a href="#">Hardware</a>
+          </span>
           </div>
         </div>
       </div>
