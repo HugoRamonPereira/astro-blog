@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@iconify-json/fluent-mdl2": "^1.2.0",
     "@iconify-json/mdi": "^1.2.1",
     "astro-icon": "^1.1.1"
   }

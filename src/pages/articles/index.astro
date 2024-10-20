@@ -2,12 +2,22 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { dateFormatter } from "../../utils/dateFormatter";
+import { Icon } from "astro-icon/components";
 
-const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
+const allBlogArticles: CollectionEntry<"blog">[] = (
+  await getCollection("blog")
+).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <MainLayout title = "Articles">
-  <h1 class="text-2xl pb-3">All Articles</h1>
+  <h1 class="text-2xl pb-3 flex items-center gap-2">
+    All Articles
+    <Icon name="fluent-mdl2:knowledge-article" />
+  </h1>
   <!-- Main Grid -->
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {allBlogArticles.map(article => (
@@ -24,7 +34,7 @@ const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
             <h2 class="text-2xl font-semibold mb-2">
               <a href={'/articles/' + article.slug}>{article.data.title}</a>
             </h2>
-            <p class="text-gray-600 text-sm mb-4">{article.data.pubDate}</p>
+            <p class="text-gray-600 text-sm mb-4">{dateFormatter(article.data.pubDate)}</p>
             <div class="flex flex-wrap gap-2">
               {article.data.tags.map((tag: string, index: number) => (
                 <span
@@ -45,12 +55,14 @@ const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
 
   <!-- Pagination -->
   <div class="flex justify-between mt-10">
-    <a href="#" class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
+    <a href="#" class="flex gap-1 bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
+      <Icon name="mdi:chevron-left" size={25} />
       Previous
     </a>
     <a href="#"
-      class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
+      class="flex gap-1 bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
       Next
+      <Icon name="mdi:chevron-right" size={25} />
     </a>
   </div>
 </MainLayout>
