@@ -5,12 +5,25 @@ import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import ArticleCard from "../../components/ArticleCard.astro";
 import SearchForm from "../../components/SearchForm.astro";
+import Pagination from "../../components/Pagination.astro";
+import { ARTICLES_PER_PAGE } from "../../constants";
 
 const allBlogArticles: CollectionEntry<"blog">[] = (
   await getCollection("blog")
 ).sort(
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const currentPage: number | null = +Astro.url.searchParams.get("page")! || 1;
+
+const totalPages: number = Math.ceil(
+  allBlogArticles.length / ARTICLES_PER_PAGE
+);
+
+const articlesForCurrentPage: CollectionEntry<"blog">[] = allBlogArticles.slice(
+  (currentPage - 1) * ARTICLES_PER_PAGE,
+  currentPage * ARTICLES_PER_PAGE
 );
 ---
 
@@ -22,21 +35,14 @@ const allBlogArticles: CollectionEntry<"blog">[] = (
   <br>
   <SearchForm />
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {allBlogArticles.map(article => (
+    {articlesForCurrentPage.map(article => (
       <ArticleCard article={article} />
     ))}
   </div>
-
-  <!-- Pagination -->
-  <div class="flex justify-between mt-10">
-    <a href="#" class="flex gap-1 bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
-      <Icon name="mdi:chevron-left" size={25} />
-      Previous
-    </a>
-    <a href="#"
-      class="flex gap-1 bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
-      Next
-      <Icon name="mdi:chevron-right" size={25} />
-    </a>
-  </div>
+  <Pagination 
+    currentPage={currentPage} 
+    totalPages={totalPages} 
+    disablePrevious={currentPage === 1}
+    disableNext={currentPage === totalPages}
+  />
 </MainLayout>

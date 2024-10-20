@@ -1,6 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../images/logo.png";
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "Articles", href: "/articles" },
+  { name: "About", href: "/about" },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="bg-gray-900 text-white">
@@ -46,31 +54,16 @@ import logo from "../images/logo.png";
       <ul
         class="font-medium flex flex-col p-4 md:p-0 mt-4 border text-white rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 border-gray-700"
       >
+      {navItems.map(item => (
         <li>
           <a
-            href="/"
-            class="block py-2 px-3 text-white rounded md:p-0 hover:text-indigo-600 transition-colors duration-150"
-            aria-current="page"
+            href={item.href}
+            class={`block py-2 px-3 ${currentPath === item.href ? "text-main-purple pointer-events-none" : "text-white"} rounded md:p-0 hover:text-main-purple transition-colors duration-150`}
           >
-            Home
+            {item.name}
           </a>
         </li>
-        <li>
-          <a
-            href="/articles"
-            class="block py-2 px-3 text-white rounded md:p-0 hover:text-indigo-600 transition-colors duration-150"
-          >
-            Articles
-          </a>
-        </li>
-        <li>
-          <a
-            href="/about"
-            class="block py-2 px-3 text-white rounded md:p-0 hover:text-indigo-600 transition-colors duration-150"
-          >
-          About
-        </a>
-        </li>
+      ))}
       </ul>
     </div>
   </div>
