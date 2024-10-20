@@ -12,6 +12,9 @@
 
 ---
 
+## Preview
+<img src='./public/images/tech-people-preview.png' />
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
