@@ -1,3 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { capitalizer } from "../utils/capitalizer";
+import type { InferEntrySchema } from "astro:content";
+
+interface ArticleProps {
+  id: string;
+  slug: string;
+  body: string;
+  collection: string;
+  data: InferEntrySchema<"blog">;
+}
+
+const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
+
+const tags: string[] = allBlogArticles.flatMap(
+  (article: ArticleProps) => article.data.tags
+);
+
+const uniqueTags: string[] = [...new Set(tags)];
+---
+
 <footer class="bg-indigo-900 text-white">
   <div class="container mx-auto mt-10 max-w-screen-xl px-8">
     <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -12,87 +35,16 @@
       <div class="my-10">
         <h3 class="text-xl font-semibold mb-4">Categories</h3>
         <ul class="text-sm text-gray-300/80">
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Tech
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Programming
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            > 
-              Gadgets
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Hardware
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Software
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              VR
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Smartphones
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Cameras
-            </a>
-          </li>
-          <li class="mb-2">
-            <a 
-              href="#"
-              target='_blank'
-              class='hover:text-white transition-colors duration-150'
-            >
-              Drones
-            </a>
-          </li>
+          {uniqueTags.map(tag => (
+            <li class="mb-2">
+              <a 
+                href={"/articles/tag/" + tag}
+                class='hover:text-white transition-colors duration-150'
+              >
+                {capitalizer(tag)}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div class="mt-10">
