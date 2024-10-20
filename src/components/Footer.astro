@@ -21,18 +21,18 @@ const tags: string[] = allBlogArticles.flatMap(
 const uniqueTags: string[] = [...new Set(tags)];
 ---
 
-<footer class="bg-indigo-900 text-white">
+<footer class="bg-indigo-900 text-white sm:pb-10">
   <div class="container mx-auto mt-10 max-w-screen-xl px-8">
-    <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid grid-cols-1 gap-4 sm:gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <div class="mt-10">
         <h3 class="text-xl font-semibold mb-4">About</h3>
-        <p class="text-sm text-gray-300/80">
+        <p class="text-sm text-gray-300/80 text-justify">
           TechPeople is a blog for tech enthusiasts. We publish articles,
           stories and tutorials about the latest technology trends and
           advancements.
         </p>
       </div>
-      <div class="my-10">
+      <div class="mt-4 sm:mt-10">
         <h3 class="text-xl font-semibold mb-4">Categories</h3>
         <ul class="text-sm text-gray-300/80">
           {uniqueTags.map(tag => (
@@ -47,7 +47,7 @@ const uniqueTags: string[] = [...new Set(tags)];
           ))}
         </ul>
       </div>
-      <div class="mt-10">
+      <div class="mt-4 sm:mt-10">
         <h3 class="text-xl font-semibold mb-4">Our Partners</h3>
         <ul class="text-sm text-gray-300/80">
           <li class="mb-2">
@@ -97,7 +97,7 @@ const uniqueTags: string[] = [...new Set(tags)];
           </li>
         </ul>
       </div>
-      <div class="mt-10">
+      <div class="mt-4 sm:mt-10 my-16 sm:my-8">
         <h3 class="text-xl font-semibold mb-4">Contact</h3>
         <ul class="text-sm text-gray-300/80">
           <li class="mb-2">
