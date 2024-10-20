@@ -1,33 +1,68 @@
-# Astro Starter Kit: Minimal
+# Tech People
 
-```sh
-npm create astro@latest -- --template minimal
-```
+##### A blog for tech people with a lot of amazing articles
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### UEFA CHAMPIONS LEAGUE CLONE - TECH STACK
+
+<p align-items="center" justify-content="center">
+  <img src='./public/images/tech-stack-astro.png' />
+</p>
+
+---
 
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
-/
+├── .astro/
+├── .vscode/
 ├── public/
 ├── src/
+│   └── components/
+│       └── ArticleCard.astro
+│       └── Footer.astro
+│       └── MostRecentArticle.astro
+│       └── Navbar.astro
+│       └── Pagination.astro
+│       └── SearchForm.astro
+│       └── Tags.astro
+│   └── content/
+│       └── blog/
+│       └── config.ts
+│   └── images/
+│   └── layouts/
+│       └── MainLayout.astro
 │   └── pages/
+│       └── articles/
+│           └── tag/
+│               └── [...tag].astro
+│           └── [...slug].astro
+│           └── index.astro
+│           └── search.astro
+│       └── 404.astro
+│       └── about.astro
 │       └── index.astro
+│   └── styles/
+│       └── global.css
+│   └── utils/
+│       └── capitalizer.ts
+│       └── dateFormatter.ts
+└── .gitignore
+└── astro.config.mjs
+└── biome.json
+└── package-lock.json
 └── package.json
+└── README.md
+└── tailwind.config.mjs
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The project was built using [Astro](https://astro.build/) with [NPM](https://www.npmjs.com/) as our package manager and also [Biome](https://biomejs.dev/) as our linter tool.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+As for the UI, we've used [TailwindCSS](https://tailwindcss.com/) along with some components from [Flowbite](https://flowbite.com/).
 
 ## 🧞 Commands
 
@@ -42,6 +77,5 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# License
+© Done with a lot of &#10084; by Hugo Ramon Pereira -> [Portfolio](https://hugoramonpereira.dev/) -> [LinkedIn](https://www.linkedin.com/in/hugo-ramon-pereira/) 🇧🇷 .
