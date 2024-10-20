@@ -1,5 +1,5 @@
 ---
-import Search from "../components/Search.astro";
+import SearchForm from "../components/SearchForm.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import { HOMEPAGE_ARTICLE_LIMIT } from "../constants";
@@ -27,7 +27,9 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
             Articles, News, Stories & Tutorials for Tech People
           </h1>
         </div>
-        <Search />
+        <div class="w-3/4">
+          <SearchForm />
+        </div>
       </div>
       <MostRecentArticle article={mostRecentArticle} />
     </div>
