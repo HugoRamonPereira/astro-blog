@@ -23,8 +23,9 @@ const currentPath = Astro.url.pathname;
         width={55}
         height={55}
       />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap">
-      <span class="text-main-purple">Tech</span>People</span>
+      <span class="self-center text-2xl font-bold whitespace-nowrap">
+        <span class="text-main-purple">Tech</span>People
+      </span>
     </a>
     <button
       data-collapse-toggle="navbar-default"
@@ -50,9 +51,9 @@ const currentPath = Astro.url.pathname;
         />
       </svg>
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+    <div class="hidden w-full md:block md:w-auto md:pr-5" id="navbar-default">
       <ul
-        class="font-medium flex flex-col p-4 md:p-0 mt-4 border text-white rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 border-gray-700"
+        class="font-normal tracking-wide flex flex-col p-4 md:p-0 mt-4 border text-white rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 border-gray-700"
       >
       {navItems.map(item => (
         <li>
